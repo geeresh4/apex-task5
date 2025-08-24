@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="dark light" />
+<title>CHIKATI SAI GEERESH — Portfolio</title>
+
+<style>
+
+:root{
+  --bg:#0b1220;--bg-2:#0e172f;--card:#111b36;--stroke:rgba(148,163,184,.2);
+  --text:#e7eefc;--muted:#a7b4cf;--primary:#2563eb;--primary-2:#1e40af;
+  --accent:#22d3ee;--ring:rgba(37,99,235,.35)
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,Arial;
+  background:radial-gradient(1400px 700px at -10% -10%,#182a57 0%,var(--bg) 60%) fixed;color:var(--text)}
+img{max-width:100%;display:block}
+a{color:#cfe3ff;text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+
+.nav{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.78);
+  border-bottom:1px solid var(--stroke);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.nav-inner{max-width:1180px;margin:auto;padding:14px 18px;display:flex;align-items:center;gap:12px;justify-content:space-between}
+.brand{font-weight:900;letter-spacing:.3px}.brand span{color:var(--accent)}
+.menu{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+.menu a{text-decoration:none;color:var(--text);font-weight:700;opacity:.95}
+.menu a.active{color:#fff;text-decoration:underline;text-underline-offset:6px}
+.burger{display:none;color:var(--text);background:transparent;border:1px solid var(--stroke);padding:6px 10px;border-radius:10px}
+@media (max-width:860px){
+  .burger{display:block}
+  .menu{display:none;position:absolute;left:12px;right:12px;top:60px;background:var(--bg);border:1px solid var(--stroke);
+    border-radius:14px;padding:12px;flex-direction:column}
+  .menu.show{display:flex}
+}
+
+
+main>section{display:none;padding:72px 18px;min-height:calc(100vh - 68px)}
+.container{max-width:1180px;margin:auto}
+.grid{display:grid;gap:18px}
+@media (min-width:900px){.grid-2{grid-template-columns:1.1fr .9fr}}
+@media (min-width:900px){.grid-3{grid-template-columns:repeat(3,1fr)}}
+.pill{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border:1px solid var(--stroke);border-radius:999px;font-size:.85rem;background:rgba(255,255,255,.02)}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--primary);color:#fff;border:none;padding:12px 16px;border-radius:12px;cursor:pointer;font-weight:800;text-decoration:none}
+.btn:hover{background:var(--primary-2)}.btn.alt{background:transparent;border:1px solid var(--stroke)}
+.muted{color:var(--muted)}.ring{box-shadow:0 0 0 8px var(--ring)}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));border:1px solid var(--stroke);border-radius:16px;padding:18px}
+
+/* HERO */
+.hero{align-items:center}.hero h1{font-size:clamp(30px,5vw,46px);line-height:1.1;margin:.2rem 0}
+.snapshot{display:grid;gap:12px}
+.snap{display:grid;gap:4px;padding:14px;background:var(--bg-2);border:1px solid var(--stroke);border-radius:14px}
+.snap b{color:#fff}
+
+/* ABOUT */
+.about p{margin:.4rem 0}
+
+/* SKILLS */
+.skill{display:grid;gap:8px}.bar{height:10px;background:#1b2747;border-radius:999px;overflow:hidden}
+.bar>span{display:block;height:100%;background:linear-gradient(90deg,#38bdf8,#22d3ee,#60a5fa)}
+
+/* EDUCATION */
+.edu{display:grid;gap:14px}
+.edu-item{display:grid;gap:6px;padding:16px;border:1px dashed var(--stroke);border-radius:14px;background:#0d1733}
+
+/* PROJECTS */
+.projects{display:grid;gap:18px}
+@media (min-width:880px){.projects{grid-template-columns:repeat(3,1fr)}}
+.proj{position:relative;overflow:hidden;border-radius:16px;border:1px solid var(--stroke);background:#0d1733}
+.proj .body{padding:14px}.proj h4{margin:.2rem 0}
+.meta{display:flex;gap:8px;flex-wrap:wrap}.meta .pill{background:rgba(37,99,235,.12)}
+
+/* DEMOS */
+.controls{display:flex;gap:10px;flex-wrap:wrap}
+input,select,textarea{background:#0b1731;border:1px solid var(--stroke);color:var(--text);padding:10px 12px;border-radius:10px;outline:none}
+input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px var(--ring)}
+.todo-item{display:flex;align-items:center;justify-content:space-between;background:#0e1a34;border:1px solid var(--stroke);padding:10px;border-radius:10px}
+.todo-actions{display:flex;gap:8px}
+.products{display:grid;gap:14px}
+@media (min-width:680px){.products{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:980px){.products{grid-template-columns:repeat(3,1fr)}}
+.product{background:#0e1a34;border:1px solid var(--stroke);border-radius:14px;padding:12px}
+.product h4{margin:.2rem 0}
+
+/* CONTACT */
+.links{display:grid;gap:10px}
+footer{padding:26px 18px;border-top:1px solid var(--stroke);text-align:center;color:var(--muted)}
+</style>
+</head>
+<body>
+<noscript><div style="padding:12px;background:#222;color:#fff;text-align:center">This site works best with JavaScript enabled.</div></noscript>
+
+<!-- NAV -->
+<nav class="nav" role="navigation" aria-label="Primary">
+  <div class="nav-inner">
+    <div class="brand" aria-label="Site brand">CHIKATI <span>SAI</span> GEERESH</div>
+    <button class="burger" id="burger" aria-controls="menu" aria-expanded="false" aria-label="Toggle menu">Menu ▾</button>
+    <ul class="menu" id="menu">
+      <li><a href="#home" data-route>Home</a></li>
+      <li><a href="#about" data-route>About</a></li>
+      <li><a href="#skills" data-route>Skills</a></li>
+      <li><a href="#education" data-route>Education</a></li>
+      <li><a href="#projects" data-route>Projects</a></li>
+      <li><a href="#todo" data-route>To-Do</a></li>
+      <li><a href="#products" data-route>Products</a></li>
+      <li><a href="#contact" data-route>Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main" role="main">
+  <!-- HOME -->
+  <section id="home" aria-labelledby="home-title">
+    <div class="container grid grid-2 hero">
+      <div>
+        <span class="pill">Full-Stack Learner • Data Science Engineering</span>
+        <h1 id="home-title">Hello, I’m <span style="color:#fff">CHIKATI SAI GEERESH</span></h1>
+        <p class="muted">
+          A 3rd-year B.Tech CSE student at <b>KL University</b> (CGPA <b>9.2</b>), specializing in
+          <b>Data Science Engineering</b>. I’m a curious, energetic builder—learning <b>HTML</b>, <b>CSS</b>, and
+          <b>JavaScript</b> through <b>Apex Planet</b> and crafting clean, responsive apps step by step.
+        </p>
+        <div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap">
+          <a class="btn ring" href="#projects">See Projects</a>
+          <a class="btn alt" href="#contact">Contact</a>
+        </div>
+      </div>
+      <div class="snapshot" aria-label="Quick snapshot">
+        <div class="snap"><span class="muted">Name</span><b>CHIKATI SAI GEERESH</b></div>
+        <div class="snap"><span class="muted">College</span><b>KL University</b></div>
+        <div class="snap"><span class="muted">Program</span><b>B.Tech — CSE (Data Science Engg.)</b></div>
+        <div class="snap"><span class="muted">CGPA</span><b>9.2</b></div>
+        <div class="snap"><span class="muted">Year</span><b>3rd Year</b></div>
+        <div class="snap"><span class="muted">Diploma</span><b>KIET Engineering College — CSE</b></div>
+        <div class="snap"><span class="muted">School</span><b>Sri Chaitanya Techno School</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" aria-labelledby="about-title">
+    <div class="container grid grid-2 about">
+      <div>
+        <span class="pill">About Me</span>
+        <h2 id="about-title" style="margin:.5rem 0 .25rem">Who I Am</h2>
+        <p>
+          I’m <b>CHIKATI SAI GEERESH</b>, a focused and hardworking learner pursuing
+          <b>CSE (Data Science Engineering)</b> at <b>KL University</b>. I enjoy turning ideas into polished,
+          responsive interfaces using <b>HTML</b>, <b>CSS</b> and <b>JavaScript</b>. Through <b>Apex Planet</b>,
+          I’m sharpening my full-stack fundamentals while practicing consistently—one clear step at a time.
+        </p>
+        <p>
+          I’m motivated by creative challenges, teamwork, and making real users happy. My approach is simple:
+          design clearly, build cleanly, iterate quickly, and learn continuously.
+        </p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px">
+          <span class="pill">#DataScience</span>
+          <span class="pill">#FullStack</span>
+          <span class="pill">#ApexPlanet</span>
+          <span class="pill">#ProblemSolving</span>
+        </div>
+        <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn" href="CHIKATI_SAI_GEERESH_Resume.pdf" download>Download Resume</a>
+          <a class="btn alt" href="#contact">Let’s Connect</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Personal Details</h3>
+        <ul class="list" style="list-style:none;padding:0;margin:.6rem 0 0;display:grid;gap:10px">
+          <li>🎓 <b>University:</b> KL University</li>
+          <li>🧪 <b>Specialization:</b> Data Science Engineering</li>
+          <li>⭐ <b>CGPA:</b> 9.2</li>
+          <li>📅 <b>Year:</b> 3rd Year</li>
+          <li>🏫 <b>School:</b> Sri Chaitanya Techno School</li>
+          <li>🎓 <b>Diploma:</b> KIET Engineering College — CSE</li>
+          <li>🛠️ <b>Learning:</b> HTML, CSS, JavaScript (Apex Planet)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" aria-labelledby="skills-title">
+    <div class="container">
+      <span class="pill">Skills</span>
+      <h2 id="skills-title" style="margin:.5rem 0 1rem">What I Work With</h2>
+      <div class="grid grid-3">
+        <div class="card skill">
+          <h3>HTML</h3><div class="bar"><span style="width:92%"></span></div>
+          <p class="muted">Semantic, accessible structures</p>
+        </div>
+        <div class="card skill">
+          <h3>CSS</h3><div class="bar"><span style="width:86%"></span></div>
+          <p class="muted">Responsive layouts, animations</p>
+        </div>
+        <div class="card skill">
+          <h3>JavaScript</h3><div class="bar"><span style="width:78%"></span></div>
+          <p class="muted">DOM, localStorage, interactivity</p>
+        </div>
+        <div class="card skill">
+          <h3>Git & GitHub</h3><div class="bar"><span style="width:72%"></span></div>
+          <p class="muted">Branching, PRs, version control</p>
+        </div>
+        <div class="card skill">
+          <h3>Problem Solving</h3><div class="bar"><span style="width:84%"></span></div>
+          <p class="muted">Clean, incremental improvements</p>
+        </div>
+        <div class="card skill">
+          <h3>Data Science Basics</h3><div class="bar"><span style="width:65%"></span></div>
+          <p class="muted">Foundations & analytical thinking</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" aria-labelledby="edu-title">
+    <div class="container">
+      <span class="pill">Education</span>
+      <h2 id="edu-title" style="margin:.5rem 0 1rem">My Academic Journey</h2>
+      <div class="edu">
+        <div class="edu-item">
+          <strong>KL University — B.Tech CSE (Data Science Engineering)</strong>
+          <span class="muted">3rd Year • CGPA: 9.2</span>
+        </div>
+        <div class="edu-item">
+          <strong>KIET Engineering College — Diploma in CSE</strong>
+          <span class="muted">Completed • Core CS foundations</span>
+        </div>
+        <div class="edu-item">
+          <strong>Sri Chaitanya Techno School</strong>
+          <span class="muted">Schooling • Strong fundamentals in Math & Science</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" aria-labelledby="proj-title">
+    <div class="container">
+      <span class="pill">Projects</span>
+      <h2 id="proj-title" style="margin:.5rem 0 1rem">Featured Work</h2>
+      <div class="projects">
+
+        <!-- Portfolio Website -->
+        <article class="proj">
+          <!-- Lazy image (SVG gradient, zero network cost) -->
+          <img
+            class="thumb"
+            loading="lazy"
+            width="640" height="160"
+            alt="Abstract blue gradient background"
+            src='data:image/svg+xml;utf8,
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 160">
+                <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                  <stop stop-color="%2312285a"/><stop offset="1" stop-color="%230b173a"/></linearGradient></defs>
+                <rect width="640" height="160" fill="url(%23g)"/>
+              </svg>' />
+          <div class="body">
+            <h4>Personal Portfolio Website (This Site)</h4>
+            <p class="muted">
+              A modern, responsive portfolio with separate pages (router), an integrated To-Do app (localStorage),
+              and a product listing demo (filter/sort/search). Built with clean HTML, CSS and vanilla JS.
+            </p>
+            <div class="meta" style="margin:.5rem 0">
+              <span class="pill">Responsive</span><span class="pill">Accessibility</span><span class="pill">Vanilla JS</span>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn" href="#home">Live Demo</a>
+              <a class="btn alt" href="#contact">Contact</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- To-Do App -->
+        <article class="proj">
+          <img class="thumb" loading="lazy" width="640" height="160" alt="Abstract blue gradient background"
+            src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 160"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="%2312285a"/><stop offset="1" stop-color="%230b173a"/></linearGradient></defs><rect width="640" height="160" fill="url(%23g)"/></svg>' />
+          <div class="body">
+            <h4>Smart To-Do & Notes</h4>
+            <p class="muted">Minimal, fast task manager with add/complete/delete and persistent storage in the browser.</p>
+            <div class="meta" style="margin:.5rem 0">
+              <span class="pill">LocalStorage</span><span class="pill">Mobile-first</span><span class="pill">Zero-backend</span>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn" href="#todo">Open App</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product Explorer -->
+        <article class="proj">
+          <img class="thumb" loading="lazy" width="640" height="160" alt="Abstract blue gradient background"
+            src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 160"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="%2312285a"/><stop offset="1" stop-color="%230b173a"/></linearGradient></defs><rect width="640" height="160" fill="url(%23g)"/></svg>' />
+          <div class="body">
+            <h4>Product Explorer — Filter & Sort</h4>
+            <p class="muted">A mini e-commerce grid that filters by category and searches by name, with sorting by price and rating.</p>
+            <div class="meta" style="margin:.5rem 0">
+              <span class="pill">Grid Layout</span><span class="pill">Filter</span><span class="pill">Sort</span>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn" href="#products">Open Demo</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TO-DO -->
+  <section id="todo" aria-labelledby="todo-title">
+    <div class="container">
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+          <h2 id="todo-title">To-Do List (Local Storage)</h2>
+          <span class="muted">Add tasks, they stay even after refresh.</span>
+        </div>
+        <form class="controls" id="todo-form" style="margin-top:8px" autocomplete="off">
+          <label for="todo-input" class="sr-only" style="position:absolute;left:-9999px">Add a task</label>
+          <input id="todo-input" placeholder="What do you want to do?" inputmode="text" />
+          <button class="btn" id="todo-add" type="submit">Add Task</button>
+          <button class="btn alt" id="todo-clear" type="button">Clear Completed</button>
+        </form>
+        <div id="todo-list" style="display:grid;gap:10px;margin-top:12px" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products" aria-labelledby="prod-title">
+    <div class="container">
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+          <h2 id="prod-title">Product Listing (Filter & Sort)</h2>
+          <span class="muted">Try changing filters to see instant updates.</span>
+        </div>
+        <div class="controls" style="margin-top:8px">
+          <label for="cat" class="sr-only" style="position:absolute;left:-9999px">Category</label>
+          <select id="cat" aria-label="Category">
+            <option value="all">All Categories</option>
+            <option value="electronics">Electronics</option>
+            <option value="clothing">Clothing</option>
+            <option value="books">Books</option>
+          </select>
+          <label for="sort" class="sr-only" style="position:absolute;left:-9999px">Sort</label>
+          <select id="sort" aria-label="Sort">
+            <option value="default">Sort By</option>
+            <option value="price-asc">Price: Low → High</option>
+            <option value="price-desc">Price: High → Low</option>
+            <option value="rating-desc">Rating: High → Low</option>
+          </select>
+          <label for="search" class="sr-only" style="position:absolute;left:-9999px">Search</label>
+          <input id="search" placeholder="Search by name…" inputmode="search" autocomplete="off" />
+        </div>
+        <div class="products" id="products-grid" style="margin-top:12px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" aria-labelledby="contact-title">
+    <div class="container grid grid-2">
+      <div>
+        <span class="pill">Contact</span>
+        <h2 id="contact-title" style="margin:.5rem 0 .3rem">Let’s Build Something Great</h2>
+        <p class="muted">
+          I’m open to internships, collaborations, and real-world projects. Reach out—
+          I’m quick to reply and excited to contribute.
+        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
+          <a class="btn" href="CHIKATI_SAI_GEERESH_Resume.pdf" download>Download Resume</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Links</h3>
+        <div class="links">
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">🔗 LinkedIn</a>
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer">💻 GitHub</a>
+          <a href="mailto:youremail@example.com">📧 youremail@example.com</a>
+          <a href="tel:+910000000000">📱 +91 00000 00000</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>© <span id="year"></span> CHIKATI SAI GEERESH • Built with HTML · CSS · JS</footer>
+
+<script>
+/* ===== Small helpers ===== */
+const $ = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => r.querySelectorAll(s);
+
+/* ===== Mobile nav toggle (ARIA + reduced reflow) ===== */
+const burger = $('#burger'); const menu = $('#menu');
+burger.addEventListener('click', () => {
+  const shown = menu.classList.toggle('show');
+  burger.setAttribute('aria-expanded', shown ? 'true' : 'false');
+}, { passive:true });
+
+/* ===== Hash Router (cross-browser friendly) ===== */
+const routes = ['home','about','skills','education','projects','todo','products','contact'];
+function show(route){
+  // hide all sections
+  $$('#main > section').forEach(s => (s.style.display='none'));
+  // set active nav link
+  $$('[data-route]').forEach(a=>a.classList.remove('active'));
+  const section = document.getElementById(route) || document.getElementById('home');
+  section.style.display='block';
+  const link = document.querySelector(`[data-route][href="#${route}"]`);
+  if(link) link.classList.add('active');
+  // close mobile menu
+  menu.classList.remove('show'); burger.setAttribute('aria-expanded','false');
+  // scroll to top (fallback to documentElement for older browsers)
+  (document.scrollingElement || document.documentElement).scrollTo({top:0,behavior:'instant'});
+}
+function handleHash(){
+  const r = location.hash.replace('#','');
+  show(routes.includes(r)? r : 'home');
+}
+window.addEventListener('hashchange', handleHash, { passive:true });
+handleHash();
+
+/* ===== Footer year ===== */
+$('#year').textContent = new Date().getFullYear();
+
+/* ===== To-Do App (LocalStorage) — optimized rendering ===== */
+const TODO_KEY = 'csg_todos_v1';
+const $todoInput = $('#todo-input');
+const $todoForm  = $('#todo-form');
+const $todoClear = $('#todo-clear');
+const $todoList  = $('#todo-list');
+
+function readTodos(){ try{ return JSON.parse(localStorage.getItem(TODO_KEY)||'[]'); }catch{ return []; } }
+function writeTodos(t){ localStorage.setItem(TODO_KEY, JSON.stringify(t)); }
+
+function renderTodos(){
+  const todos = readTodos();
+  $todoList.innerHTML='';
+  if(!todos.length){
+    const empty=document.createElement('div'); empty.className='muted';
+    empty.textContent='No tasks yet — add your first task above.'; $todoList.appendChild(empty); return;
+  }
+  const frag = document.createDocumentFragment();
+  todos.forEach((t,i)=>{
+    const row=document.createElement('div'); row.className='todo-item';
+    const left=document.createElement('div'); left.style.display='flex'; left.style.gap='10px'; left.style.alignItems='center';
+    const cb=document.createElement('input'); cb.type='checkbox'; cb.checked=!!t.done; cb.setAttribute('aria-label','Mark done');
+    cb.addEventListener('change',()=>{ const x=readTodos(); x[i].done=cb.checked; writeTodos(x); renderTodos(); }, { passive:true });
+    const label=document.createElement('span'); label.textContent=t.text; if(t.done) label.style.textDecoration='line-through';
+    left.appendChild(cb); left.appendChild(label);
+
+    const actions=document.createElement('div'); actions.className='todo-actions';
+    const del=document.createElement('button'); del.className='btn alt'; del.type='button'; del.textContent='Delete';
+    del.addEventListener('click',()=>{ const x=readTodos(); x.splice(i,1); writeTodos(x); renderTodos(); });
+    actions.appendChild(del);
+
+    row.appendChild(left); row.appendChild(actions); frag.appendChild(row);
+  });
+  $todoList.appendChild(frag);
+}
+
+$todoForm.addEventListener('submit',(e)=>{
+  e.preventDefault();
+  const v=$todoInput.value.trim(); if(!v) return;
+  const x=readTodos(); x.push({text:v,done:false}); writeTodos(x); $todoInput.value=''; renderTodos();
+});
+$todoClear.addEventListener('click',()=>{ const x=readTodos().filter(t=>!t.done); writeTodos(x); renderTodos(); });
+renderTodos();
+
+/* ===== Products (Filter + Sort + Search) — batched + debounced ===== */
+const PRODUCTS = Object.freeze([
+  {name:'Laptop Air 14', category:'electronics', price:620, rating:4.6},
+  {name:'Noise-Cancel Headphones', category:'electronics', price:120, rating:4.4},
+  {name:'Cotton T-Shirt', category:'clothing', price:18, rating:4.1},
+  {name:'Denim Jeans', category:'clothing', price:42, rating:4.3},
+  {name:'JavaScript Essentials', category:'books', price:25, rating:4.7},
+  {name:'Data Science Handbook', category:'books', price:32, rating:4.8},
+  {name:'Smart Watch', category:'electronics', price:99, rating:4.2},
+  {name:'Hoodie Classic', category:'clothing', price:35, rating:4.0}
+]);
+const $cat = $('#cat'), $sort = $('#sort'), $search = $('#search'), $grid = $('#products-grid');
+
+function renderProducts(list){
+  $grid.innerHTML='';
+  if(!list.length){ $grid.innerHTML='<div class="muted">No products match.</div>'; return; }
+  const frag = document.createDocumentFragment();
+  list.forEach(p=>{
+    const card=document.createElement('div'); card.className='product';
+    card.innerHTML = `
+      <div class="pill" style="margin-bottom:6px;text-transform:capitalize">${p.category}</div>
+      <h4>${p.name}</h4>
+      <p class="muted" aria-label="Price">Price: $${p.price.toFixed(2)}</p>
+      <p class="muted" aria-label="Rating">Rating: ${p.rating.toFixed(1)} ★</p>
+    `;
+    frag.appendChild(card);
+  });
+  $grid.appendChild(frag);
+}
+
+function filterAndSort(){
+  const cat=$cat.value, q=$search.value.trim().toLowerCase();
+  let list=PRODUCTS;
+  if(cat!=='all') list=list.filter(p=>p.category===cat);
+  if(q) list=list.filter(p=>p.name.toLowerCase().includes(q));
+  switch($sort.value){
+    case 'price-asc': list=[...list].sort((a,b)=>a.price-b.price); break;
+    case 'price-desc': list=[...list].sort((a,b)=>b.price-a.price); break;
+    case 'rating-desc': list=[...list].sort((a,b)=>b.rating-a.rating); break;
+    default: list=[...list];
+  }
+  renderProducts(list);
+}
+
+function debounce(fn, ms=150){ let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn.apply(this,args), ms); }; }
+const filterAndSortDebounced = debounce(filterAndSort, 120);
+[$cat,$sort].forEach(el=>el.addEventListener('input', filterAndSort, { passive:true }));
+$search.addEventListener('input', filterAndSortDebounced);
+renderProducts(PRODUCTS);
+
+/* ===== Misc: Progressive enhancement ===== */
+// Mark external links semantically
+$$('a[target="_blank"]').forEach(a=>a.setAttribute('rel','noopener noreferrer'));
+</script>
+</body>
+</html>
